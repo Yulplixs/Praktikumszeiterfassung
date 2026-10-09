@@ -1,637 +1,324 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="de">
 <head>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
-  <meta charset="utf-8"/>
-
-  <link rel="stylesheet" href="css/globals.css">
-
-  <link rel="stylesheet" href="css/style.css">
-
-
-<style>
-.mockup-control{box-sizing:border-box;width:100%;min-width:0;height:100%;border:0;outline:none;background:transparent;color:inherit;font:inherit;padding:0 10px;border-radius:inherit}
-select.mockup-control{cursor:pointer}
-input.mockup-control:focus,select.mockup-control:focus{box-shadow:inset 0 0 0 2px #2563eb;background-color:#fff}
-input[type=date].mockup-control,input[type=number].mockup-control{min-height:38px}
-.eingabe,.eingabe-2,.wert-wrapper{min-width:0}
-.eingabe-2 .mockup-control,.wert-wrapper .mockup-control{padding:0 12px}
-</style>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Betreuungszeiten – BBS Einbeck</title>
+  <link rel="stylesheet" href="css/globals.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
-
-  <div class="betreuungszeiten-BBS" data-model-id="4:1874">
-
-    <div class="hauptnavigation">
-
-      <img class="BBS-einbeck-logo" src="https://c.animaapp.com/C1Kzow0U/img/bbs-einbeck-logo.svg" />
-
-      <div class="trennlinie"></div>
-
-      <div class="text-wrapper">Praktikumsbetreuung</div>
-
-      <div class="bereiche">
-
-        <div class="aktiver-bereich"><div class="div">Zeitbuchungen</div></div>
-
-        <div class="bereich">Lehrkräfte</div>
-
-        <div class="bereich">Klassen</div>
-
-      </div>
-
-      <div class="div-2">
-
-        <div class="initialen"><div class="k-rzel">SV</div></div>
-
-      </div>
-
-      <div class="benutzer"><div class="text-wrapper-2">Schulverwaltung</div></div>
-
-      <div class="text-wrapper-3">BBS Einbeck</div>
-
-      <img class="img" src="https://c.animaapp.com/C1Kzow0U/img/chevron-down-4.svg" />
-
-    </div>
-
-
-
-    <div class="arbeitsbereich">
-
-      <div class="seitentitel">
-
-        <div class="titel">Betreuungszeiten</div>
-
-      </div>
-
-
-
-      <p class="beschreibung">
-
-        Zeitbuchungen für die Praktikumsbetreuung erfassen und je Lehrkraft auswerten.
-
-      </p>
-
-
-
-      <div class="aktion">
-
-        <img class="img" src="https://c.animaapp.com/C1Kzow0U/img/download.svg" />
-
-        <div class="div">Übersicht exportieren</div>
-
-      </div>
-
-
-
-      <div class="div-4">
-
-        <div class="eingabefeld">
-
-          <div class="text-wrapper-4">Zeitraum</div>
-
-          <div class="eingabe"><select class="mockup-control" id="zeitraum" aria-label="Zeitraum"><option>Oktober 2026</option><option>September 2026</option><option>November 2026</option></select></div>
-
-        </div>
-
-
-
-        <div class="eingabefeld">
-
-          <div class="text-wrapper-4">Von</div>
-
-          <div class="eingabe"><input class="mockup-control" type="date" id="von" aria-label="Von" value="2026-10-01" /></div>
-
-        </div>
-
-
-
-        <div class="eingabefeld">
-
-          <div class="text-wrapper-4">Bis</div>
-
-          <div class="eingabe"><input class="mockup-control" type="date" id="bis" aria-label="Bis" value="2026-10-31" /></div>
-
-        </div>
-
-
-
-        <div class="eingabefeld">
-
-          <div class="text-wrapper-4">Lehrkraft</div>
-
-          <div class="eingabe"><select class="mockup-control" id="filter-lehrkraft" aria-label="Lehrkraft"><option>Alle Lehrkräfte</option><option>MUE – Anna Müller</option><option>SCH – Thomas Schmidt</option><option>WEB – Laura Weber</option></select></div>
-
-        </div>
-
-
-
-        <div class="aktion-2">
-
-          <img class="img" src="https://c.animaapp.com/C1Kzow0U/img/list-filter.svg" />
-
-          <div class="div">Filter anwenden</div>
-
-        </div>
-
-      </div>
-
-
-
-      <div class="datenhinweis">
-
-        <div class="text-wrapper-5">Schuljahr 2026/27</div>
-
-        <div class="beispieldaten">
-
-          <div class="kennzeichnung">Beispieldaten</div>
-
-        </div>
-
-      </div>
-
-
-
-      <div class="kennzahlen-im">
-
-        <div class="kennzahl">
-
-          <img class="kennzahlensymbol" src="https://c.animaapp.com/C1Kzow0U/img/kennzahlensymbol.svg" />
-
-          <div class="div-5">
-
-            <div class="text-wrapper-6">Erfasste Betreuungsstunden</div>
-
-            <div class="wert-und-kontext"><div class="wert-2">16,75 h</div></div>
-
-          </div>
-
-        </div>
-
-
-
-        <div class="kennzahl-2">
-
-          <img class="kennzahlensymbol" src="https://c.animaapp.com/C1Kzow0U/img/kennzahlensymbol-1.svg" />
-
-          <div class="div-5">
-
-            <div class="text-wrapper-6">Zeitbuchungen</div>
-
-            <div class="wert-und-kontext">
-
-              <div class="wert-2">8</div>
-
-              <div class="text-wrapper-5">in 3 Klassen</div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-
-        <div class="kennzahl-2">
-
-          <img class="kennzahlensymbol" src="https://c.animaapp.com/C1Kzow0U/img/kennzahlensymbol-2.svg" />
-
-          <div class="div-5">
-
-            <div class="text-wrapper-6">Lehrkräfte mit Buchungen</div>
-
-            <div class="wert-und-kontext"><div class="wert-2">3</div></div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-
-      <div class="neue-zeitbuchung">
-
-        <div class="div-3">
-
-          <div class="div-6">
-
-            <div class="text-wrapper-7">Neue Zeitbuchung</div>
-
-            <div class="entwurfsstatus">
-
-              <div class="status">Noch nicht gespeichert</div>
-
-            </div>
-
-          </div>
-
-
-
-          <div class="text-wrapper-3">\* Pflichtfelder</div>
-
-
-
-          <div class="eingabefeld-4">
-
-            <div class="text-wrapper-4">Datum \*</div>
-
-            <div class="eingabe"><input class="mockup-control" type="date" id="buchungsdatum" aria-label="Datum" value="2026-10-09" required /></div>
-
-          </div>
-
-
-
-          <div class="eingabefeld-5">
-
-            <div class="text-wrapper-4">Klasse \*</div>
-
-            <div class="eingabe"><select class="mockup-control" id="klasse" aria-label="Klasse" required><option>BFSW24a</option><option>BFSW24b</option><option>FOSW25</option></select></div>
-
-          </div>
-
-
-
-          <div class="eingabefeld-5">
-
-            <div class="text-wrapper-4">Lehrkraft Kürzel \*</div>
-
-            <div class="eingabe"><select class="mockup-control" id="lehrkraft" aria-label="Lehrkraft Kürzel" required><option>MUE</option><option>SCH</option><option>WEB</option></select></div>
-
-          </div>
-
-
-
-          <div class="eingabefeld-6">
-
-            <div class="text-wrapper-4">Schüleranzahl \*</div>
-
-            <div class="wert-wrapper"><input class="mockup-control" type="number" id="schueleranzahl" aria-label="Schüleranzahl" min="1" step="1" value="24" required /></div>
-
-          </div>
-
-
-
-          <div class="eingabefeld-7">
-
-            <div class="text-wrapper-4">Betreuungsstunden \*</div>
-
-            <div class="eingabe-2"><input class="mockup-control" type="number" id="betreuungsstunden" aria-label="Betreuungsstunden" min="0" step="0.25" value="1.50" required /></div>
-
-          </div>
-
-
-
-          <div class="aktion-2">
-
-            <img class="img" src="https://c.animaapp.com/C1Kzow0U/img/plus.svg" />
-
-            <div class="div">Buchung speichern</div>
-
-          </div>
-
-
-
-          <div class="div-7">
-
-            <img class="info" src="https://c.animaapp.com/C1Kzow0U/img/info.svg" />
-
-          </div>
-
-
-
-          <div class="hinweis">
-
-            Betreuungsstunden werden manuell eingegeben, z. B. 1,50 h für 1 Stunde 30 Minuten. Keine Berechnung aus der Schüleranzahl.
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-
-      <div class="buchungen-und">
-
-        <div class="zeitbuchungstabelle">
-
-          <div class="tabellenkopf">
-
-            <div class="div-2">
-
-              <div class="text-wrapper-7">Zeitbuchungen</div>
-
-              <div class="anzahl">8</div>
-
-            </div>
-
-            <div class="text-wrapper-5">01.10.2026 – 31.10.2026</div>
-
-          </div>
-
-
-
-          <div class="spaltenbeschriften">
-
-            <div class="datumssortierung">
-
-              <div class="text-wrapper-4">Datum</div>
-
-              <img class="arrow-down" src="https://c.animaapp.com/C1Kzow0U/img/arrow-down.svg" />
-
-            </div>
-
-            <div class="spaltenname">Klasse</div>
-
-            <div class="spaltenname-2">Lehrkraftkürzel</div>
-
-            <div class="spaltenname-3">Schüleranzahl</div>
-
-            <div class="spaltenname-4">Betreuungsstunden</div>
-
-            <div class="spaltenname-5"></div>
-
-          </div>
-
-
-
-          <div class="zeitbuchung">
-
-            <div class="tabellenwert">08.10.2026</div>
-
-            <div class="tabellenwert-2">BFSW24a</div>
-
-            <div class="lehrkraft"><div class="krzel"><div class="text-wrapper-4">MUE</div></div></div>
-
-            <div class="tabellenwert-3">24</div>
-
-            <div class="tabellenwert-4">2,50 h</div>
-
-            <img class="bearbeiten" src="https://c.animaapp.com/C1Kzow0U/img/bearbeiten.svg" />
-
-          </div>
-
-
-
-          <div class="zeitbuchung">
-
-            <div class="tabellenwert">08.10.2026</div>
-
-            <div class="tabellenwert-2">BFSW24b</div>
-
-            <div class="lehrkraft"><div class="krzel"><div class="text-wrapper-4">SCH</div></div></div>
-
-            <div class="tabellenwert-3">22</div>
-
-            <div class="tabellenwert-4">1,50 h</div>
-
-            <img class="bearbeiten" src="https://c.animaapp.com/C1Kzow0U/img/bearbeiten-1.svg" />
-
-          </div>
-
-
-
-          <div class="zeitbuchung">
-
-            <div class="tabellenwert">07.10.2026</div>
-
-            <div class="tabellenwert-2">FOSW25</div>
-
-            <div class="lehrkraft"><div class="krzel"><div class="text-wrapper-4">WEB</div></div></div>
-
-            <div class="tabellenwert-3">18</div>
-
-            <div class="tabellenwert-4">2,50 h</div>
-
-            <img class="bearbeiten" src="https://c.animaapp.com/C1Kzow0U/img/bearbeiten-2.svg" />
-
-          </div>
-
-
-
-          <div class="zeitbuchung">
-
-            <div class="tabellenwert">06.10.2026</div>
-
-            <div class="tabellenwert-2">BFSW24a</div>
-
-            <div class="lehrkraft"><div class="krzel"><div class="text-wrapper-4">MUE</div></div></div>
-
-            <div class="tabellenwert-3">24</div>
-
-            <div class="tabellenwert-4">2,00 h</div>
-
-            <img class="bearbeiten" src="https://c.animaapp.com/C1Kzow0U/img/bearbeiten-3.svg" />
-
-          </div>
-
-
-
-          <div class="zeitbuchung">
-
-            <div class="tabellenwert">05.10.2026</div>
-
-            <div class="tabellenwert-2">BFSW24b</div>
-
-            <div class="lehrkraft"><div class="krzel"><div class="text-wrapper-4">SCH</div></div></div>
-
-            <div class="tabellenwert-3">22</div>
-
-            <div class="tabellenwert-4">2,25 h</div>
-
-            <img class="bearbeiten" src="https://c.animaapp.com/C1Kzow0U/img/bearbeiten-4.svg" />
-
-          </div>
-
-
-
-          <div class="zeitbuchung">
-
-            <div class="tabellenwert">02.10.2026</div>
-
-            <div class="tabellenwert-2">FOSW25</div>
-
-            <div class="lehrkraft"><div class="krzel"><div class="text-wrapper-4">WEB</div></div></div>
-
-            <div class="tabellenwert-3">18</div>
-
-            <div class="tabellenwert-4">1,50 h</div>
-
-            <img class="bearbeiten" src="https://c.animaapp.com/C1Kzow0U/img/bearbeiten-5.svg" />
-
-          </div>
-
-
-
-          <div class="zeitbuchung">
-
-            <div class="tabellenwert">01.10.2026</div>
-
-            <div class="tabellenwert-2">BFSW24a</div>
-
-            <div class="lehrkraft"><div class="krzel"><div class="text-wrapper-4">SCH</div></div></div>
-
-            <div class="tabellenwert-3">22</div>
-
-            <div class="tabellenwert-4">3,00 h</div>
-
-            <img class="bearbeiten" src="https://c.animaapp.com/C1Kzow0U/img/bearbeiten-6.svg" />
-
-          </div>
-
-
-
-          <div class="stundensumme">
-
-            <div class="div">Summe im gewählten Zeitraum</div>
-
-            <div class="wert-wrapper"><div class="wert-2">16,75 h</div></div>
-
-          </div>
-
-
-
-          <div class="tabellenabschluss">
-
-            <div class="text-wrapper-5">1–8 von 8 Buchungen</div>
-
-            <div class="div-6">
-
-              <img class="img-2" src="https://c.animaapp.com/C1Kzow0U/img/vorherige-seite.svg" />
-
-              <div class="text-wrapper-5">Seite 1 von 1</div>
-
-              <img class="img-2" src="https://c.animaapp.com/C1Kzow0U/img/n-chste-seite.svg" />
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-
-        <div class="betreuungsstunden-je">
-
-          <div class="lehrkräftebersicht">
-
-            <div class="titel-2">Stunden je Lehrkraft</div>
-
-            <p class="zeitraum">Oktober 2026 · alle Lehrkräfte</p>
-
-
-
-            <div class="lehrkraftauswertung">
-
-              <div class="lehrkraft-und">
-
-                <div class="lehrkraftkrzel"><div class="text-wrapper-4">MUE</div></div>
-
-                <div class="name">Anna Müller</div>
-
-                <div class="text-wrapper-3">3 Buchungen</div>
-
-                <div class="betreuungsstunden">7,50 h</div>
-
-              </div>
-
-              <div class="stundenvergleich"><div class="erfasste-stunden"></div></div>
-
-              <div class="text-wrapper-3">Klasse BFSW24a</div>
-
-            </div>
-
-
-
-            <div class="lehrkraftauswertung">
-
-              <div class="lehrkraft-und">
-
-                <div class="lehrkraftkrzel"><div class="text-wrapper-4">SCH</div></div>
-
-                <div class="name">Thomas Schmidt</div>
-
-                <div class="text-wrapper-3">3 Buchungen</div>
-
-                <div class="betreuungsstunden">5,25 h</div>
-
-              </div>
-
-              <div class="stundenvergleich"><div class="erfasste-stunden-2"></div></div>
-
-              <div class="text-wrapper-3">Klasse BFSW24b</div>
-
-            </div>
-
-
-
-            <div class="lehrkraftauswertung">
-
-              <div class="lehrkraft-und">
-
-                <div class="lehrkraftkrzel"><div class="text-wrapper-4">WEB</div></div>
-
-                <div class="name">Laura Weber</div>
-
-                <div class="text-wrapper-3">2 Buchungen</div>
-
-                <div class="betreuungsstunden">4,00 h</div>
-
-              </div>
-
-              <div class="stundenvergleich"><div class="erfasste-stunden-3"></div></div>
-
-              <div class="text-wrapper-3">Klasse FOSW25</div>
-
-            </div>
-
-
-
-            <div class="gesamtsumme">
-
-              <div class="div">Gesamt</div>
-
-              <div class="summe">16,75 h</div>
-
-            </div>
-
-          </div>
-
-
-
-          <div class="hinweis-zur">
-
-            <div class="hinweistitel">
-
-              <img class="info-2" src="https://c.animaapp.com/C1Kzow0U/img/info-1.svg" />
-
-              <div class="div">Erfasste Zeiten</div>
-
-            </div>
-
-            <p class="erl-uterung">
-
-              Die Übersicht summiert die gebuchten Betreuungsstunden im gewählten Zeitraum. Die Schüleranzahl wird je Buchung dokumentiert.
-
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
+  <!-- Icon-Sprite (Lucide-Stil) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M7 12h10"/><path d="M10 18h4"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+    <symbol id="i-notebook" viewBox="0 0 24 24"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"/><path d="M2 6h4"/><path d="M2 10h4"/><path d="M2 14h4"/><path d="M2 18h4"/><path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+    <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></symbol>
+    <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  </svg>
+
+  <header class="hauptnavigation">
+    <img class="logo" src="img/bbs-einbeck-logo.svg" alt="BBS Einbeck" />
+    <div class="trennlinie"></div>
+    <div class="app-name">Praktikumsbetreuung</div>
+
+    <nav class="bereiche">
+      <a class="bereich aktiv" href="#">Zeitbuchungen</a>
+      <a class="bereich" href="#">Lehrkräfte</a>
+      <a class="bereich" href="#">Klassen</a>
+    </nav>
+
+    <button class="benutzer" type="button">
+      <span class="initialen">SV</span>
+      <span class="benutzer-text">
+        <span class="benutzer-name">Schulverwaltung</span>
+        <span class="benutzer-schule">BBS Einbeck</span>
+      </span>
+      <svg class="icon"><use href="#i-chevron-down"/></svg>
+    </button>
+  </header>
+
+  <main class="arbeitsbereich">
+
+    <!-- Seitenkopf -->
+    <section class="seitenkopf">
+      <div>
+        <h1 class="titel">Betreuungszeiten</h1>
+        <p class="beschreibung">Zeitbuchungen für die Praktikumsbetreuung erfassen und je Lehrkraft auswerten.</p>
+      </div>
+      <button class="button button-sekundaer" type="button">
+        <svg class="icon"><use href="#i-download"/></svg>
+        Übersicht exportieren
+      </button>
+    </section>
+
+    <!-- Filter -->
+    <section class="filterleiste">
+      <label class="feld feld-zeitraum">
+        <span class="feld-label">Zeitraum</span>
+        <select class="eingabe">
+          <option>Oktober 2026</option>
+          <option>September 2026</option>
+          <option>November 2026</option>
+        </select>
+      </label>
+      <label class="feld feld-datum">
+        <span class="feld-label">Von</span>
+        <input class="eingabe" type="date" value="2026-10-01" />
+      </label>
+      <label class="feld feld-datum">
+        <span class="feld-label">Bis</span>
+        <input class="eingabe" type="date" value="2026-10-31" />
+      </label>
+      <label class="feld feld-lehrkraft">
+        <span class="feld-label">Lehrkraft</span>
+        <select class="eingabe">
+          <option>Alle Lehrkräfte</option>
+          <option>MUE – Anna Müller</option>
+          <option>SCH – Thomas Schmidt</option>
+          <option>WEB – Laura Weber</option>
+        </select>
+      </label>
+      <button class="button button-primaer" type="button">
+        <svg class="icon"><use href="#i-filter"/></svg>
+        Filter anwenden
+      </button>
+
+      <div class="datenhinweis">
+        <span class="text-gedaempft">Schuljahr 2026/27</span>
+        <span class="badge">Beispieldaten</span>
+      </div>
+    </section>
+
+    <!-- Kennzahlen -->
+    <section class="kennzahlen">
+      <div class="kennzahl kennzahl-hervorgehoben">
+        <span class="kennzahl-symbol"><svg class="icon"><use href="#i-clock"/></svg></span>
+        <div>
+          <div class="kennzahl-label">Erfasste Betreuungsstunden</div>
+          <div class="kennzahl-wert">16,75 h <span class="kennzahl-kontext">im gewählten Zeitraum</span></div>
+        </div>
+      </div>
+      <div class="kennzahl">
+        <span class="kennzahl-symbol"><svg class="icon"><use href="#i-notebook"/></svg></span>
+        <div>
+          <div class="kennzahl-label">Zeitbuchungen</div>
+          <div class="kennzahl-wert">8 <span class="kennzahl-kontext">in 3 Klassen</span></div>
+        </div>
+      </div>
+      <div class="kennzahl">
+        <span class="kennzahl-symbol"><svg class="icon"><use href="#i-users"/></svg></span>
+        <div>
+          <div class="kennzahl-label">Lehrkräfte mit Buchungen</div>
+          <div class="kennzahl-wert">3 <span class="kennzahl-kontext">MUE · SCH · WEB</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Neue Zeitbuchung -->
+    <form class="karte neue-zeitbuchung" onsubmit="return false">
+      <div class="karte-kopf">
+        <div class="karte-titelzeile">
+          <h2 class="karte-titel">Neue Zeitbuchung</h2>
+          <span class="status">Noch nicht gespeichert</span>
+        </div>
+        <span class="text-klein">* Pflichtfelder</span>
+      </div>
+
+      <div class="formularzeile">
+        <label class="feld feld-buchungsdatum">
+          <span class="feld-label">Datum *</span>
+          <input class="eingabe" type="date" value="2026-10-09" required />
+        </label>
+        <label class="feld feld-flex">
+          <span class="feld-label">Klasse *</span>
+          <select class="eingabe" required>
+            <option>BFSW24a</option>
+            <option>BFSW24b</option>
+            <option>FOSW25</option>
+          </select>
+        </label>
+        <label class="feld feld-flex">
+          <span class="feld-label">Lehrkraftkürzel *</span>
+          <select class="eingabe" required>
+            <option>MUE</option>
+            <option>SCH</option>
+            <option>WEB</option>
+          </select>
+        </label>
+        <label class="feld feld-schueler">
+          <span class="feld-label">Schüleranzahl *</span>
+          <input class="eingabe" type="number" min="1" step="1" value="24" required />
+        </label>
+        <label class="feld feld-stunden">
+          <span class="feld-label">Betreuungsstunden *</span>
+          <span class="eingabe-mit-icon">
+            <input class="eingabe eingabe-aktiv" type="text" inputmode="decimal" value="1,50" required />
+            <svg class="icon"><use href="#i-clock"/></svg>
+          </span>
+        </label>
+        <button class="button button-primaer button-gross" type="submit">
+          <svg class="icon"><use href="#i-plus"/></svg>
+          Buchung speichern
+        </button>
+      </div>
+
+      <p class="hinweis">
+        <svg class="icon icon-klein"><use href="#i-info"/></svg>
+        Betreuungsstunden als tatsächlich erfasste Zeit in Dezimalstunden eintragen, z.&nbsp;B. 1,50&nbsp;h für 1 Stunde 30 Minuten. Keine Berechnung aus der Schüleranzahl.
+      </p>
+    </form>
+
+    <!-- Tabelle + Auswertung -->
+    <div class="buchungen-layout">
+
+      <section class="karte zeitbuchungen">
+        <div class="tabellenkopf">
+          <div class="karte-titelzeile">
+            <h2 class="karte-titel">Zeitbuchungen</h2>
+            <span class="anzahl">8</span>
+          </div>
+          <span class="text-gedaempft">01.10.2026 – 31.10.2026</span>
+        </div>
+
+        <table class="tabelle">
+          <thead>
+            <tr>
+              <th class="sortierbar">Datum <svg class="icon icon-klein"><use href="#i-arrow-down"/></svg></th>
+              <th>Klasse</th>
+              <th>Lehrkraftkürzel</th>
+              <th class="rechts">Schüleranzahl</th>
+              <th class="rechts">Betreuungsstunden</th>
+              <th class="aktion-spalte"><span class="sr-only">Aktionen</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>08.10.2026</td><td class="fett">BFSW24a</td><td><span class="kuerzel">MUE</span></td>
+              <td class="rechts">24</td><td class="rechts fett">2,50 h</td>
+              <td class="aktion-spalte"><button class="icon-button" type="button" aria-label="Bearbeiten"><svg class="icon"><use href="#i-pencil"/></svg></button></td>
+            </tr>
+            <tr>
+              <td>08.10.2026</td><td class="fett">BFSW24b</td><td><span class="kuerzel">SCH</span></td>
+              <td class="rechts">22</td><td class="rechts fett">1,50 h</td>
+              <td class="aktion-spalte"><button class="icon-button" type="button" aria-label="Bearbeiten"><svg class="icon"><use href="#i-pencil"/></svg></button></td>
+            </tr>
+            <tr>
+              <td>07.10.2026</td><td class="fett">FOSW25</td><td><span class="kuerzel">WEB</span></td>
+              <td class="rechts">18</td><td class="rechts fett">2,50 h</td>
+              <td class="aktion-spalte"><button class="icon-button" type="button" aria-label="Bearbeiten"><svg class="icon"><use href="#i-pencil"/></svg></button></td>
+            </tr>
+            <tr>
+              <td>06.10.2026</td><td class="fett">BFSW24a</td><td><span class="kuerzel">MUE</span></td>
+              <td class="rechts">24</td><td class="rechts fett">2,00 h</td>
+              <td class="aktion-spalte"><button class="icon-button" type="button" aria-label="Bearbeiten"><svg class="icon"><use href="#i-pencil"/></svg></button></td>
+            </tr>
+            <tr>
+              <td>05.10.2026</td><td class="fett">BFSW24b</td><td><span class="kuerzel">SCH</span></td>
+              <td class="rechts">22</td><td class="rechts fett">2,25 h</td>
+              <td class="aktion-spalte"><button class="icon-button" type="button" aria-label="Bearbeiten"><svg class="icon"><use href="#i-pencil"/></svg></button></td>
+            </tr>
+            <tr>
+              <td>02.10.2026</td><td class="fett">FOSW25</td><td><span class="kuerzel">WEB</span></td>
+              <td class="rechts">18</td><td class="rechts fett">1,50 h</td>
+              <td class="aktion-spalte"><button class="icon-button" type="button" aria-label="Bearbeiten"><svg class="icon"><use href="#i-pencil"/></svg></button></td>
+            </tr>
+            <tr>
+              <td>01.10.2026</td><td class="fett">BFSW24a</td><td><span class="kuerzel">MUE</span></td>
+              <td class="rechts">24</td><td class="rechts fett">3,00 h</td>
+              <td class="aktion-spalte"><button class="icon-button" type="button" aria-label="Bearbeiten"><svg class="icon"><use href="#i-pencil"/></svg></button></td>
+            </tr>
+            <tr>
+              <td>01.10.2026</td><td class="fett">BFSW24b</td><td><span class="kuerzel">SCH</span></td>
+              <td class="rechts">22</td><td class="rechts fett">1,50 h</td>
+              <td class="aktion-spalte"><button class="icon-button" type="button" aria-label="Bearbeiten"><svg class="icon"><use href="#i-pencil"/></svg></button></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="summenzeile">
+              <td colspan="4">Summe im gewählten Zeitraum</td>
+              <td colspan="2" class="rechts summe">16,75 h</td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <div class="tabellenabschluss">
+          <span class="text-gedaempft">1–8 von 8 Buchungen</span>
+          <div class="paginierung">
+            <span class="text-gedaempft">Seite 1 von 1</span>
+            <button class="icon-button" type="button" aria-label="Vorherige Seite" disabled><svg class="icon"><use href="#i-chevron-left"/></svg></button>
+            <button class="icon-button" type="button" aria-label="Nächste Seite" disabled><svg class="icon"><use href="#i-chevron-right"/></svg></button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="seitenleiste">
+        <section class="karte lehrkraefte">
+          <h2 class="karte-titel">Stunden je Lehrkraft</h2>
+          <p class="text-gedaempft">Oktober 2026 · alle Lehrkräfte</p>
+
+          <div class="lehrkraft">
+            <div class="lehrkraft-kopf">
+              <span class="kuerzel kuerzel-gross">MUE</span>
+              <div class="lehrkraft-name">
+                <strong>Anna Müller</strong>
+                <span class="text-klein">3 Buchungen</span>
+              </div>
+              <span class="lehrkraft-stunden">7,50 h</span>
+            </div>
+            <div class="balken"><div class="balken-wert" style="width: 87%"></div></div>
+            <span class="text-klein">Klasse BFSW24a</span>
+          </div>
+
+          <div class="lehrkraft">
+            <div class="lehrkraft-kopf">
+              <span class="kuerzel kuerzel-gross">SCH</span>
+              <div class="lehrkraft-name">
+                <strong>Thomas Schmidt</strong>
+                <span class="text-klein">3 Buchungen</span>
+              </div>
+              <span class="lehrkraft-stunden">5,25 h</span>
+            </div>
+            <div class="balken"><div class="balken-wert" style="width: 61%"></div></div>
+            <span class="text-klein">Klasse BFSW24b</span>
+          </div>
+
+          <div class="lehrkraft">
+            <div class="lehrkraft-kopf">
+              <span class="kuerzel kuerzel-gross">WEB</span>
+              <div class="lehrkraft-name">
+                <strong>Laura Weber</strong>
+                <span class="text-klein">2 Buchungen</span>
+              </div>
+              <span class="lehrkraft-stunden">4,00 h</span>
+            </div>
+            <div class="balken"><div class="balken-wert" style="width: 46%"></div></div>
+            <span class="text-klein">Klasse FOSW25</span>
+          </div>
+
+          <div class="gesamtsumme">
+            <strong>Gesamt</strong>
+            <span class="gesamtsumme-wert">16,75 h</span>
+          </div>
+        </section>
+
+        <section class="infobox">
+          <h3 class="infobox-titel">
+            <svg class="icon"><use href="#i-info"/></svg>
+            Erfasste Zeiten, keine Sollstunden
+          </h3>
+          <p>Die Übersicht summiert die gebuchten Betreuungsstunden im gewählten Zeitraum. Die Schüleranzahl wird je Buchung dokumentiert.</p>
+        </section>
+      </aside>
+
+    </div>
+  </main>
 </body>
-
 </html>

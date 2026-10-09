@@ -1,1092 +1,790 @@
 /* style.css */
 
-.betreuungszeiten-BBS {
-  display: flex;
-  flex-direction: column;
-  min-height: 1100px;
-  align-items: flex-start;
-  position: relative;
-  background-color: #f5f5f2;
+:root {
+  --gelb: #fdc93a;
+  --gelb-hell: #fff7dd;
+  --hintergrund: #f5f5f2;
+  --flaeche: #ffffff;
+  --flaeche-grau: #f8f8f5;
+  --rahmen: #dddddd;
+  --text: #000000;
+  --text-gedaempft: #66665f;
+  --fokus: #2563eb;
+  --radius: 6px;
+  --radius-karte: 10px;
 }
 
-.betreuungszeiten-BBS .hauptnavigation {
-  display: flex;
-  height: 88px;
-  align-items: center;
-  gap: 32px;
-  padding: 0px 48px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  background-color: #ffffff;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-color: #dddddd;
+body {
+  background-color: var(--hintergrund);
+  color: var(--text);
+  font-family: "Carlito", Helvetica, Arial, sans-serif;
+  font-size: 16px;
 }
 
-.betreuungszeiten-BBS .BBS-einbeck-logo {
-  position: relative;
-  width: 160px;
-  height: 60px;
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
 }
 
-.betreuungszeiten-BBS .trennlinie {
-  position: relative;
+strong,
+.fett {
+  font-weight: 700;
+}
+
+.sr-only {
+  position: absolute;
   width: 1px;
-  height: 32px;
-  background-color: #dddddd;
-}
-
-.betreuungszeiten-BBS .text-wrapper {
-  position: relative;
-  width: fit-content;
-  font-family: "Carlito", Helvetica;
-  font-weight: 700;
-  color: #000000;
-  font-size: 18px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.betreuungszeiten-BBS .bereiche {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  padding: 0px 0px 0px 30px;
-  position: relative;
-  flex: 1;
-  align-self: stretch;
-  flex-grow: 1;
-}
-
-.betreuungszeiten-BBS .aktiver-bereich {
-  display: inline-flex;
-  align-items: center;
-  position: relative;
-  align-self: stretch;
-  flex: 0 0 auto;
-  border-bottom-width: 4px;
-  border-bottom-style: solid;
-  border-color: #fdc93a;
-}
-
-.betreuungszeiten-BBS .div {
-  position: relative;
-  width: fit-content;
-  font-family: "Carlito", Helvetica;
-  font-weight: 700;
-  color: #000000;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.betreuungszeiten-BBS .bereich {
-  position: relative;
-  width: fit-content;
-  font-family: "Carlito", Helvetica;
-  font-weight: 400;
-  color: #66665f;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.betreuungszeiten-BBS .div-2 {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  position: relative;
-  flex: 0 0 auto;
-}
-
-.betreuungszeiten-BBS .initialen {
-  display: flex;
-  width: 36px;
-  height: 36px;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  background-color: #f8f8f5;
-  border-radius: 100px;
+  height: 1px;
   overflow: hidden;
-}
-
-.betreuungszeiten-BBS .k-rzel {
-  position: relative;
-  width: fit-content;
-  font-family: "Carlito", Helvetica;
-  font-weight: 700;
-  color: #000000;
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.betreuungszeiten-BBS .benutzer {
-  display: flex;
-  flex-direction: column;
-  width: 104px;
-  align-items: flex-start;
-  gap: 1px;
-  position: relative;
-}
-
-.betreuungszeiten-BBS .text-wrapper-2 {
-  position: relative;
-  width: fit-content;
-  margin-top: -1px;
-  font-family: "Carlito", Helvetica;
-  font-weight: 700;
-  color: #000000;
-  font-size: 15px;
-  letter-spacing: 0;
-  line-height: normal;
+  clip: rect(0 0 0 0);
   white-space: nowrap;
 }
 
-.betreuungszeiten-BBS .text-wrapper-3 {
-  position: relative;
-  width: fit-content;
-  font-family: "Carlito", Helvetica;
-  font-weight: 400;
-  color: #66665f;
-  font-size: 13px;
-  letter-spacing: 0;
-  line-height: normal;
-}
+/* ---------- Icons ---------- */
 
-.betreuungszeiten-BBS .img {
-  position: relative;
+.icon {
   width: 18px;
   height: 18px;
-}
-
-
-.betreuungszeiten-BBS .arbeitsbereich {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
-  padding: 32px 48px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
   flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.betreuungszeiten-BBS .bersicht {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  flex: 0 0 auto;
+.icon-klein {
+  width: 15px;
+  height: 15px;
 }
 
-.betreuungszeiten-BBS .div-3 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  flex: 0 0 auto;
-}
+/* ---------- Texte ---------- */
 
-.betreuungszeiten-BBS .seitentitel {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-  position: relative;
-  flex: 0 0 auto;
-}
-
-.betreuungszeiten-BBS .titel {
-  position: relative;
-  width: fit-content;
-  margin-top: -1px;
-  font-family: "Carlito", Helvetica;
-  font-weight: 700;
-  color: #000000;
-  font-size: 36px;
-  letter-spacing: -0.22px;
-  line-height: normal;
-}
-
-.betreuungszeiten-BBS .beschreibung {
-  position: relative;
-  width: fit-content;
-  font-family: "Carlito", Helvetica;
-  font-weight: 400;
-  color: #66665f;
-  font-size: 17px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.betreuungszeiten-BBS .aktion {
-  display: inline-flex;
-  height: 42px;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 0px 16px;
-  position: relative;
-  flex: 0 0 auto;
-  background-color: #ffffff;
-  border-radius: 6px;
-  overflow: hidden;
-  border: 1px solid;
-  border-color: #dddddd;
-  margin-left:3vh;
-}
-
-
-.betreuungszeiten-BBS .div-4 {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  gap: 16px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  min-width: 0;
-  flex: 0 0 auto;
-  flex-wrap: nowrap;
-}
-
-
-.betreuungszeiten-BBS .eingabefeld {
-  width: 228px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-}
-
-.betreuungszeiten-BBS .text-wrapper-4 {
-  position: relative;
-  width: fit-content;
-  margin-top: -1px;
-  font-family: "Carlito", Helvetica;
-  font-weight: 700;
-  color: #000000;
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.betreuungszeiten-BBS .eingabe {
-  display: flex;
-  height: 44px;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0px 12px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  background-color: #ffffff;
-  border-radius: 6px;
-  overflow: hidden;
-  border: 1px solid;
-  border-color: #dddddd;
-}
-
-.betreuungszeiten-BBS .wert {
-  position: relative;
-  width: fit-content;
-  font-family: "Carlito", Helvetica;
-  font-weight: 400;
-  color: #000000;
+.text-gedaempft {
+  color: var(--text-gedaempft);
   font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
 }
 
-.betreuungszeiten-BBS .eingabefeld-2 {
+.text-klein {
+  color: var(--text-gedaempft);
+  font-size: 15px;
+}
+
+/* ---------- Hauptnavigation ---------- */
+
+.hauptnavigation {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: 112px;
+  padding: 0 60px;
+  background-color: var(--flaeche);
+  border-bottom: 1px solid var(--rahmen);
+}
+
+.logo {
+  width: 200px;
+  height: 75px;
+}
+
+.trennlinie {
+  width: 1px;
+  height: 32px;
+  background-color: var(--rahmen);
+}
+
+.app-name {
+  font-size: 21px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.bereiche {
+  display: flex;
+  align-self: stretch;
+  gap: 28px;
+  flex: 1;
+  padding-left: 30px;
+  font-size: 19px;
+}
+
+.bereich {
+  display: flex;
+  align-items: center;
+  color: var(--text-gedaempft);
+  border-bottom: 4px solid transparent;
+  border-top: 4px solid transparent;
+}
+
+.bereich:hover {
+  color: var(--text);
+}
+
+.bereich.aktiv {
+  color: var(--text);
+  font-weight: 700;
+  border-bottom-color: var(--gelb);
+}
+
+.benutzer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.initialen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--flaeche-grau);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.benutzer-text {
   display: flex;
   flex-direction: column;
-  width: 176px;
-  align-items: flex-start;
-  gap: 7px;
-  position: relative;
+  gap: 1px;
+  margin-right: 8px;
 }
 
-.betreuungszeiten-BBS .eingabefeld-3 {
-  width: 236px;
+.benutzer-name {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.benutzer-schule {
+  font-size: 15px;
+  color: var(--text-gedaempft);
+}
+
+/* ---------- Arbeitsbereich ---------- */
+
+.arbeitsbereich {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 7px;
-  position: relative;
+  gap: 24px;
+  padding: 40px 60px 48px;
 }
 
-.betreuungszeiten-BBS .aktion-2 {
+.seitenkopf {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.titel {
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -0.22px;
+  margin-bottom: 6px;
+}
+
+.beschreibung {
+  font-size: 19px;
+  color: var(--text-gedaempft);
+}
+
+/* ---------- Buttons ---------- */
+
+.button {
   display: inline-flex;
-  height: 42px;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 0px 16px;
-  position: relative;
-  flex: 0 0 auto;
-  background-color: #fdc93a;
-  border-radius: 6px;
-  overflow: hidden;
-  border: 1px solid;
-  margin-bottom: 1%;
-}
-
-.betreuungszeiten-BBS .datenhinweis {
-  display: flex;
   height: 44px;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 8px;
-  position: relative;
-  flex: 1;
-  flex-grow: 1;
-}
-
-.betreuungszeiten-BBS .text-wrapper-5 {
-  position: relative;
-  width: fit-content;
-  font-family: "Carlito", Helvetica;
-  font-weight: 400;
-  color: #66665f;
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.betreuungszeiten-BBS .beispieldaten {
-  display: inline-flex;
-  align-items: flex-start;
-  padding: 5px 10px;
-  position: relative;
-  flex: 0 0 auto;
-  background-color: #dddddd;
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.betreuungszeiten-BBS .kennzeichnung {
-  position: relative;
-  width: fit-content;
-  margin-top: -1px;
-  font-family: "Carlito", Helvetica;
+  padding: 0 18px;
+  border-radius: var(--radius);
+  font-size: 17px;
   font-weight: 700;
-  color: #000000;
-  font-size: 13px;
-  letter-spacing: 0;
-  line-height: normal;
+  white-space: nowrap;
+  cursor: pointer;
 }
 
-.betreuungszeiten-BBS .kennzahlen-im {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  flex: 0 0 auto;
-  overflow: hidden;
+.button-primaer {
+  background-color: var(--gelb);
+  border: 1px solid var(--gelb);
 }
 
-.betreuungszeiten-BBS .kennzahl {
-  display: flex;
-  height: 104px;
+.button-primaer:hover {
+  background-color: #f5bd1f;
+}
+
+.button-sekundaer {
+  background-color: var(--flaeche);
+  border: 1px solid var(--rahmen);
+}
+
+.button-sekundaer:hover {
+  background-color: var(--flaeche-grau);
+}
+
+.button-gross {
+  height: 50px;
+  padding: 0 20px;
+}
+
+.icon-button {
+  display: inline-flex;
   align-items: center;
-  gap: 16px;
-  padding: 20px;
-  position: relative;
-  flex: 1;
-  flex-grow: 1;
-  background-color: #fff7dd;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid;
-  border-color: #fdc93a;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  background: none;
+  cursor: pointer;
 }
 
-.betreuungszeiten-BBS .kennzahlensymbol {
-  position: relative;
-  width: 42px;
-  height: 42px;
+.icon-button:hover:not(:disabled) {
+  background-color: var(--flaeche-grau);
 }
 
-.betreuungszeiten-BBS .div-5 {
+.icon-button:disabled {
+  color: var(--text-gedaempft);
+  cursor: default;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--fokus);
+  outline-offset: 2px;
+}
+
+/* ---------- Formularfelder ---------- */
+
+.feld {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 3px;
-  position: relative;
-  flex: 1;
-  flex-grow: 1;
+  gap: 8px;
+  min-width: 0;
 }
 
-.betreuungszeiten-BBS .text-wrapper-6 {
+.feld-label {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.eingabe {
+  width: 100%;
+  height: 50px;
+  padding: 0 14px;
+  background-color: var(--flaeche);
+  border: 1px solid var(--rahmen);
+  border-radius: var(--radius);
+  font-size: 17px;
+  outline: none;
+}
+
+.eingabe:focus {
+  border-color: var(--fokus);
+  box-shadow: 0 0 0 1px var(--fokus);
+}
+
+select.eingabe {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 40px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 18px;
+}
+
+.eingabe-aktiv {
+  border: 1.5px solid var(--text);
+}
+
+.eingabe-mit-icon {
   position: relative;
-  width: fit-content;
-  margin-top: -1px;
-  font-family: "Carlito", Helvetica;
-  font-weight: 400;
-  color: #66665f;
+  display: block;
+}
+
+.eingabe-mit-icon .eingabe {
+  padding-right: 44px;
+}
+
+.eingabe-mit-icon .icon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+/* ---------- Filterleiste ---------- */
+
+.filterleiste {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.feld-zeitraum  { width: 282px; }
+.feld-datum     { width: 218px; }
+.feld-lehrkraft { width: 290px; }
+
+.filterleiste .eingabe {
+  height: 54px;
+}
+
+.filterleiste .button {
+  height: 52px;
+}
+
+.datenhinweis {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  height: 54px;
+}
+
+.badge {
+  padding: 5px 12px;
+  border-radius: var(--radius);
+  background-color: #e8e8e4;
   font-size: 14px;
-  letter-spacing: 0;
-  line-height: normal;
+  font-weight: 700;
 }
 
-.betreuungszeiten-BBS .wert-und-kontext {
+/* ---------- Kennzahlen ---------- */
+
+.kennzahlen {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.kennzahl {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 128px;
+  padding: 24px;
+  background-color: var(--flaeche);
+  border: 1px solid var(--rahmen);
+  border-radius: var(--radius-karte);
+}
+
+.kennzahl-hervorgehoben {
+  background-color: var(--gelb-hell);
+  border-color: var(--gelb);
+}
+
+.kennzahl-symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  flex: 0 0 auto;
+  border-radius: 8px;
+  background-color: var(--flaeche-grau);
+}
+
+.kennzahl-symbol .icon {
+  width: 26px;
+  height: 26px;
+}
+
+.kennzahl-hervorgehoben .kennzahl-symbol {
+  background-color: var(--gelb);
+}
+
+.kennzahl-label {
+  font-size: 16px;
+  color: var(--text-gedaempft);
+  margin-bottom: 4px;
+}
+
+.kennzahl-wert {
   display: flex;
   align-items: baseline;
-  gap: 12px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  flex: 0 0 auto;
-}
-
-.betreuungszeiten-BBS .wert-2 {
-  font-size: 30px;
-  position: relative;
-  width: fit-content;
-  margin-top: -1px;
-  font-family: "Carlito", Helvetica;
+  gap: 14px;
+  font-size: 36px;
   font-weight: 700;
-  color: #000000;
-  letter-spacing: 0;
-  line-height: normal;
 }
 
-.betreuungszeiten-BBS .kennzahl-2 {
-  display: flex;
-  height: 104px;
-  align-items: center;
-  gap: 16px;
-  padding: 20px;
-  position: relative;
-  flex: 1;
-  flex-grow: 1;
-  background-color: #ffffff;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid;
-  border-color: #dddddd;
-}
-
-.betreuungszeiten-BBS .neue-zeitbuchung {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 18px;
-  padding: 24px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  flex: 0 0 auto;
-  background-color: #ffffff;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid;
-  border-color: #dddddd;
-  margin-left:3vh;
-}
-
-.betreuungszeiten-BBS .div-6 {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  position: relative;
-  flex: 0 0 auto;
-}
-
-.betreuungszeiten-BBS .text-wrapper-7 {
-  position: relative;
-  width: fit-content;
-  margin-top: -1px;
-  font-family: "Carlito", Helvetica;
-  font-weight: 700;
-  color: #000000;
-  font-size: 22px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.betreuungszeiten-BBS .entwurfsstatus {
-  display: inline-flex;
-  align-items: flex-start;
-  padding: 4px 9px;
-  position: relative;
-  flex: 0 0 auto;
-  background-color: #f8f8f5;
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.betreuungszeiten-BBS .status {
-  position: relative;
-  width: fit-content;
-  margin-top: -1px;
-  font-family: "Carlito", Helvetica;
+.kennzahl-kontext {
+  font-size: 16px;
   font-weight: 400;
-  color: #66665f;
-  font-size: 13px;
-  letter-spacing: 0;
-  line-height: normal;
+  color: var(--text-gedaempft);
 }
 
-.betreuungszeiten-BBS .eingabefeld-4 {
-  width: 190px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 7px;
-  position: relative;
+/* ---------- Karten ---------- */
+
+.karte {
+  background-color: var(--flaeche);
+  border: 1px solid var(--rahmen);
+  border-radius: var(--radius-karte);
 }
 
-.betreuungszeiten-BBS .eingabefeld-5 {
-  flex: 1;
-  flex-grow: 1;
+.karte-kopf {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 7px;
-  position: relative;
-}
-
-.betreuungszeiten-BBS .eingabefeld-6 {
-  width: 172px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 7px;
-  position: relative;
-}
-
-.betreuungszeiten-BBS .wert-wrapper {
-  justify-content: space-around;
-  border: 1px solid;
-  border-color: #dddddd;
-  display: flex;
-  height: 44px;
   align-items: center;
-  padding: 0px 12px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  background-color: #ffffff;
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.betreuungszeiten-BBS .eingabefeld-7 {
-  width: 196px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 7px;
-  position: relative;
-}
-
-.betreuungszeiten-BBS .eingabe-2 {
   justify-content: space-between;
-  border: 1.5px solid;
-  border-color: #000000;
-  display: flex;
-  height: 44px;
-  align-items: center;
-  padding: 0px 12px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  background-color: #ffffff;
-  border-radius: 6px;
-  overflow: hidden;
+  gap: 16px;
 }
 
-.betreuungszeiten-BBS .div-7 {
+.karte-titelzeile {
   display: flex;
   align-items: center;
-  gap: 8px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  flex: 0 0 auto;
+  gap: 14px;
 }
 
-.betreuungszeiten-BBS .info {
-  position: relative;
-  width: 16px;
-  height: 16px;
+.karte-titel {
+  font-size: 26px;
+  font-weight: 700;
 }
 
-.betreuungszeiten-BBS .hinweis {
-  position: relative;
-  flex: 1;
-  margin-top: -1px;
-  font-family: "Carlito", Helvetica;
-  font-weight: 400;
-  color: #66665f;
+.status {
+  padding: 4px 10px;
+  border-radius: var(--radius);
+  background-color: var(--flaeche-grau);
+  color: var(--text-gedaempft);
   font-size: 14px;
-  letter-spacing: 0;
-  line-height: normal;
 }
 
-.betreuungszeiten-BBS .buchungen-und {
+/* ---------- Neue Zeitbuchung ---------- */
+
+.neue-zeitbuchung {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
   gap: 24px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  flex: 0 0 auto;
+  padding: 28px;
 }
 
-.betreuungszeiten-BBS .zeitbuchungstabelle {
+.formularzeile {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  position: relative;
-  flex: 1;
-  flex-grow: 1;
-  background-color: #ffffff;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid;
-  border-color: #dddddd;
-}
-
-.betreuungszeiten-BBS .tabellenkopf {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 24px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  flex: 0 0 auto;
-}
-
-.betreuungszeiten-BBS .anzahl {
-  display: inline-flex;
-  align-items: flex-start;
-  padding: 2px 8px;
-  position: relative;
-  flex: 0 0 auto;
-  background-color: #f8f8f5;
-  border-radius: 100px;
-  overflow: hidden;
-}
-
-
-.betreuungszeiten-BBS .spaltenbeschriften {
-  display: flex;
-  height: 44px;
-  align-items: center;
+  align-items: flex-end;
   gap: 20px;
-  padding: 0px 24px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  background-color: #f8f8f5;
-  border-top-width: 1px;
-  border-top-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-color: #dddddd;
 }
 
-.betreuungszeiten-BBS .datumsortierung {
+.feld-buchungsdatum { width: 236px; flex: 0 0 auto; }
+.feld-flex          { flex: 1; }
+.feld-schueler      { width: 214px; flex: 0 0 auto; }
+.feld-stunden       { width: 244px; flex: 0 0 auto; }
+
+.hinweis {
   display: flex;
-  width: 155px;
   align-items: center;
-  gap: 6px;
-  position: relative;
-}
-
-.betreuungszeiten-BBS .arrow-down {
-  position: relative;
-  width: 14px;
-  height: 14px;
-}
-
-.betreuungszeiten-BBS .spaltenname {
-  width: 190px;
-  font-weight: 700;
-  color: #000000;
-  position: relative;
-  font-family: "Carlito", Helvetica;
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.betreuungszeiten-BBS .spaltenname-2 {
-  width: 180px;
-  font-weight: 700;
-  color: #000000;
-  position: relative;
-  font-family: "Carlito", Helvetica;
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.betreuungszeiten-BBS .spaltenname-3 {
-  width: 142px;
-  font-weight: 700;
-  color: #000000;
-  text-align: right;
-  position: relative;
-  font-family: "Carlito", Helvetica;
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.betreuungszeiten-BBS .spaltenname-4 {
-  width: 222px;
-  font-weight: 700;
-  color: #000000;
-  text-align: right;
-  position: relative;
-  font-family: "Carlito", Helvetica;
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.betreuungszeiten-BBS .spaltenname-5 {
-  flex: 1;
-  font-weight: 400;
-  color: #66665f;
-  text-align: right;
-  position: relative;
-  font-family: "Carlito", Helvetica;
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.betreuungszeiten-BBS .zeitbuchung {
-  display: flex;
-  height: 49px;
-  align-items: center;
-  gap: 20px;
-  padding: 0px 24px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-color: #dddddd;
-}
-
-.betreuungszeiten-BBS .tabellenwert {
-  position: relative;
-  width: 155px;
-  font-family: "Carlito", Helvetica;
-  font-weight: 400;
-  color: #000000;
+  gap: 10px;
+  color: var(--text-gedaempft);
   font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
 }
 
-.betreuungszeiten-BBS .tabellenwert-2 {
-  width: 190px;
-  font-weight: 700;
-  position: relative;
-  font-family: "Carlito", Helvetica;
-  color: #000000;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
+.hinweis .icon {
+  color: var(--text);
 }
 
-.betreuungszeiten-BBS .lehrkraft {
-  display: flex;
-  width: 180px;
-  align-items: flex-start;
-  position: relative;
+/* ---------- Zeitbuchungen + Seitenleiste ---------- */
+
+.buchungen-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 446px;
+  gap: 32px;
+  align-items: start;
 }
 
-.betreuungszeiten-BBS .krzel {
-  display: inline-flex;
-  align-items: flex-start;
-  padding: 4px 9px;
-  position: relative;
-  flex: 0 0 auto;
-  background-color: #f8f8f5;
-  border-radius: 4px;
+.zeitbuchungen {
   overflow: hidden;
 }
 
-.betreuungszeiten-BBS .tabellenwert-3 {
-  width: 142px;
-  font-weight: 400;
-  text-align: right;
-  position: relative;
-  font-family: "Carlito", Helvetica;
-  color: #000000;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.betreuungszeiten-BBS .tabellenwert-4 {
-  width: 222px;
-  font-weight: 700;
-  text-align: right;
-  position: relative;
-  font-family: "Carlito", Helvetica;
-  color: #000000;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-
-.betreuungszeiten-BBS .stundensumme {
+.tabellenkopf {
   display: flex;
-  height: 50px;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 24px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  background-color: #fff7dd;
-}
-
-.betreuungszeiten-BBS .tabellenabschluss {
-  display: flex;
-  height: 56px;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0px 24px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-}
-
-.betreuungszeiten-BBS .img-2 {
-  position: relative;
-  flex: 0 0 auto;
-}
-
-.betreuungszeiten-BBS .betreuungsstunden-je {
-  display: flex;
-  flex-direction: column;
-  width: 360px;
-  align-items: flex-start;
   gap: 16px;
-  position: relative;
+  padding: 28px;
 }
 
-.betreuungszeiten-BBS .lehrkräftebersicht {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 24px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  flex: 0 0 auto;
-  background-color: #ffffff;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid;
-  border-color: #dddddd;
-}
-
-.betreuungszeiten-BBS .titel-2 {
-  position: relative;
-  align-self: stretch;
-  margin-top: -1px;
-  font-family: "Carlito", Helvetica;
+.anzahl {
+  padding: 2px 10px;
+  border-radius: 100px;
+  background-color: var(--flaeche-grau);
+  font-size: 15px;
   font-weight: 700;
-  color: #000000;
-  font-size: 22px;
-  letter-spacing: 0;
-  line-height: normal;
 }
 
-.betreuungszeiten-BBS .zeitraum {
-  position: relative;
-  align-self: stretch;
-  font-family: "Carlito", Helvetica;
-  font-weight: 400;
-  color: #66665f;
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: 19.6px;
-}
-
-.betreuungszeiten-BBS .lehrkraftauswertung {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 20px 0px;
-  position: relative;
-  align-self: stretch;
+.tabelle {
   width: 100%;
-  flex: 0 0 auto;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-color: #dddddd;
+  border-collapse: collapse;
 }
 
-.betreuungszeiten-BBS .lehrkraft-und {
+.tabelle th,
+.tabelle td {
+  padding: 0 28px;
+  text-align: left;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.tabelle th {
+  height: 54px;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: var(--flaeche-grau);
+  border-top: 1px solid var(--rahmen);
+  border-bottom: 1px solid var(--rahmen);
+}
+
+.tabelle .sortierbar .icon {
+  vertical-align: -2px;
+  margin-left: 4px;
+}
+
+.tabelle tbody td {
+  height: 61px;
+  font-size: 18px;
+  border-bottom: 1px solid var(--rahmen);
+}
+
+.tabelle .rechts {
+  text-align: right;
+}
+
+.tabelle .aktion-spalte {
+  width: 1%;
+  text-align: right;
+  padding-left: 0;
+}
+
+.tabelle tbody tr:hover {
+  background-color: #fcfcfa;
+}
+
+.kuerzel {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background-color: var(--flaeche-grau);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.summenzeile td {
+  height: 62px;
+  background-color: var(--gelb-hell);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.summenzeile .summe {
+  font-size: 21px;
+}
+
+.tabellenabschluss {
   display: flex;
   align-items: center;
-  gap: 12px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  flex: 0 0 auto;
+  justify-content: space-between;
+  height: 68px;
+  padding: 0 28px;
 }
 
-.betreuungszeiten-BBS .lehrkraftkrzel {
+.paginierung {
   display: flex;
-  width: 44px;
-  height: 38px;
+  align-items: center;
+  gap: 4px;
+}
+
+.paginierung .text-gedaempft {
+  margin-right: 8px;
+}
+
+/* Seitenleiste */
+
+.seitenleiste {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.lehrkraefte {
+  padding: 28px;
+}
+
+.lehrkraefte > .text-gedaempft {
+  margin-top: 4px;
+  font-size: 16px;
+}
+
+.lehrkraft {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--rahmen);
+}
+
+.lehrkraft-kopf {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.kuerzel-gross {
+  display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  background-color: #f8f8f5;
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.betreuungszeiten-BBS .name {
-  position: relative;
-  width: fit-content;
-  margin-top: -1px;
-  font-family: "Carlito", Helvetica;
-  font-weight: 700;
-  color: #000000;
+  width: 54px;
+  height: 46px;
+  padding: 0;
+  border-radius: var(--radius);
   font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
 }
 
-.betreuungszeiten-BBS .betreuungsstunden {
-  position: relative;
-  width: fit-content;
-  font-family: "Carlito", Helvetica;
-  font-weight: 700;
-  color: #000000;
-  font-size: 19px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.betreuungszeiten-BBS .stundenvergleich {
+.lehrkraft-name {
   display: flex;
-  height: 5px;
-  align-items: flex-start;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  background-color: #f8f8f5;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  font-size: 18px;
+}
+
+.lehrkraft-stunden {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.balken {
+  height: 6px;
   border-radius: 100px;
+  background-color: var(--flaeche-grau);
   overflow: hidden;
 }
 
-.betreuungszeiten-BBS .erfasste-stunden {
-  position: relative;
-  width: 272px;
-  height: 5px;
-  background-color: #fdc93a;
+.balken-wert {
+  height: 100%;
   border-radius: 100px;
+  background-color: var(--gelb);
 }
 
-.betreuungszeiten-BBS .erfasste-stunden-2 {
-  width: 190px;
-  position: relative;
-  height: 5px;
-  background-color: #fdc93a;
-  border-radius: 100px;
-}
-
-.betreuungszeiten-BBS .erfasste-stunden-3 {
-  width: 145px;
-  position: relative;
-  height: 5px;
-  background-color: #fdc93a;
-  border-radius: 100px;
-}
-
-.betreuungszeiten-BBS .gesamtsumme {
+.gesamtsumme {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 0px 0px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  flex: 0 0 auto;
+  padding-top: 26px;
+  font-size: 19px;
 }
 
-.betreuungszeiten-BBS .summe {
-  position: relative;
-  width: fit-content;
-  margin-top: -1px;
-  font-family: "Carlito", Helvetica;
+.gesamtsumme-wert {
+  font-size: 28px;
   font-weight: 700;
-  color: #000000;
-  font-size: 24px;
-  letter-spacing: 0;
-  line-height: normal;
 }
 
-.betreuungszeiten-BBS .hinweis-zur {
+.infobox {
+  padding: 24px;
+  border-radius: var(--radius-karte);
+  background-color: var(--gelb-hell);
+}
+
+.infobox-titel {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 20px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  flex: 0 0 auto;
-  background-color: #fff7dd;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.betreuungszeiten-BBS .hinweistitel {
-  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  position: relative;
-  flex: 0 0 auto;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-size: 18px;
+  font-weight: 700;
 }
 
-.betreuungszeiten-BBS .info-2 {
-  position: relative;
-  width: 17px;
-  height: 17px;
+.infobox p {
+  color: var(--text-gedaempft);
+  font-size: 16px;
+  line-height: 1.5;
 }
 
-.betreuungszeiten-BBS .erl-uterung {
-  position: relative;
-  align-self: stretch;
-  font-family: "Carlito", Helvetica;
-  font-weight: 400;
-  color: #66665f;
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: 20.3px;
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1500px) {
+  .formularzeile {
+    flex-wrap: wrap;
+  }
+
+  .feld-flex {
+    min-width: 220px;
+  }
+
+  .buchungen-layout {
+    grid-template-columns: minmax(0, 1fr) 380px;
+  }
 }
 
-.flex-wrapper-div-4{
-  display:flex;
+@media (max-width: 1200px) {
+  .buchungen-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .zeitbuchungen {
+    overflow-x: auto;
+  }
+
+  .datenhinweis {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .hauptnavigation {
+    flex-wrap: wrap;
+    height: auto;
+    gap: 16px;
+    padding: 12px 16px;
+  }
+
+  .trennlinie,
+  .benutzer-text {
+    display: none;
+  }
+
+  .bereiche {
+    order: 10;
+    flex-basis: 100%;
+    padding-left: 0;
+    height: 44px;
+  }
+
+  .arbeitsbereich {
+    padding: 24px 16px;
+  }
+
+  .seitenkopf {
+    flex-direction: column;
+  }
+
+  .kennzahlen {
+    grid-template-columns: 1fr;
+  }
+
+  .feld-zeitraum,
+  .feld-datum,
+  .feld-lehrkraft,
+  .feld-buchungsdatum,
+  .feld-schueler,
+  .feld-stunden,
+  .feld-flex {
+    width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .filterleiste .button,
+  .formularzeile .button {
+    width: 100%;
+  }
 }
