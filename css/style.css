@@ -263,7 +263,7 @@ a:focus-visible {
   outline-offset: 2px;
 }
 
-/* ---------- Formularfelder ---------- */
+/* ---------- Formular ---------- */
 
 .feld {
   display: flex;
@@ -327,7 +327,7 @@ select.eingabe {
   pointer-events: none;
 }
 
-/* ---------- Filterleiste ---------- */
+/* ---------- Filter ---------- */
 
 .filterleiste {
   display: flex;
@@ -428,7 +428,6 @@ select.eingabe {
   color: var(--text-gedaempft);
 }
 
-/* ---------- Karten ---------- */
 
 .karte {
   background-color: var(--flaeche);
@@ -494,7 +493,7 @@ select.eingabe {
   color: var(--text);
 }
 
-/* ---------- Zeitbuchungen + Seitenleiste ---------- */
+/* ---------- Zeitbuchungen/leiste ---------- */
 
 .buchungen-layout {
   display: grid;
