@@ -1,0 +1,789 @@
+/* style.css */
+
+:root {
+  --gelb: #fdc93a;
+  --gelb-hell: #fff7dd;
+  --hintergrund: #f5f5f2;
+  --flaeche: #ffffff;
+  --flaeche-grau: #f8f8f5;
+  --rahmen: #dddddd;
+  --text: #000000;
+  --text-gedaempft: #66665f;
+  --fokus: #2563eb;
+  --radius: 6px;
+  --radius-karte: 10px;
+}
+
+body {
+  background-color: var(--hintergrund);
+  color: var(--text);
+  font-family: "Carlito", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+strong,
+.fett {
+  font-weight: 700;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Icons ---------- */
+
+.icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon-klein {
+  width: 15px;
+  height: 15px;
+}
+
+/* ---------- Texte ---------- */
+
+.text-gedaempft {
+  color: var(--text-gedaempft);
+  font-size: 16px;
+}
+
+.text-klein {
+  color: var(--text-gedaempft);
+  font-size: 15px;
+}
+
+/* ---------- Hauptnavigation ---------- */
+
+.hauptnavigation {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: 112px;
+  padding: 0 60px;
+  background-color: var(--flaeche);
+  border-bottom: 1px solid var(--rahmen);
+}
+
+.logo {
+  width: 200px;
+  height: 75px;
+}
+
+.trennlinie {
+  width: 1px;
+  height: 32px;
+  background-color: var(--rahmen);
+}
+
+.app-name {
+  font-size: 21px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.bereiche {
+  display: flex;
+  align-self: stretch;
+  gap: 28px;
+  flex: 1;
+  padding-left: 30px;
+  font-size: 19px;
+}
+
+.bereich {
+  display: flex;
+  align-items: center;
+  color: var(--text-gedaempft);
+  border-bottom: 4px solid transparent;
+  border-top: 4px solid transparent;
+}
+
+.bereich:hover {
+  color: var(--text);
+}
+
+.bereich.aktiv {
+  color: var(--text);
+  font-weight: 700;
+  border-bottom-color: var(--gelb);
+}
+
+.benutzer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.initialen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--flaeche-grau);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.benutzer-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-right: 8px;
+}
+
+.benutzer-name {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.benutzer-schule {
+  font-size: 15px;
+  color: var(--text-gedaempft);
+}
+
+/* ---------- Arbeitsbereich ---------- */
+
+.arbeitsbereich {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 40px 60px 48px;
+}
+
+.seitenkopf {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.titel {
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -0.22px;
+  margin-bottom: 6px;
+}
+
+.beschreibung {
+  font-size: 19px;
+  color: var(--text-gedaempft);
+}
+
+/* ---------- Buttons ---------- */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 18px;
+  border-radius: var(--radius);
+  font-size: 17px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.button-primaer {
+  background-color: var(--gelb);
+  border: 1px solid var(--gelb);
+}
+
+.button-primaer:hover {
+  background-color: #f5bd1f;
+}
+
+.button-sekundaer {
+  background-color: var(--flaeche);
+  border: 1px solid var(--rahmen);
+}
+
+.button-sekundaer:hover {
+  background-color: var(--flaeche-grau);
+}
+
+.button-gross {
+  height: 50px;
+  padding: 0 20px;
+}
+
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  background: none;
+  cursor: pointer;
+}
+
+.icon-button:hover:not(:disabled) {
+  background-color: var(--flaeche-grau);
+}
+
+.icon-button:disabled {
+  color: var(--text-gedaempft);
+  cursor: default;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--fokus);
+  outline-offset: 2px;
+}
+
+/* ---------- Formular ---------- */
+
+.feld {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.feld-label {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.eingabe {
+  width: 100%;
+  height: 50px;
+  padding: 0 14px;
+  background-color: var(--flaeche);
+  border: 1px solid var(--rahmen);
+  border-radius: var(--radius);
+  font-size: 17px;
+  outline: none;
+}
+
+.eingabe:focus {
+  border-color: var(--fokus);
+  box-shadow: 0 0 0 1px var(--fokus);
+}
+
+select.eingabe {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 40px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 18px;
+}
+
+.eingabe-aktiv {
+  border: 1.5px solid var(--text);
+}
+
+.eingabe-mit-icon {
+  position: relative;
+  display: block;
+}
+
+.eingabe-mit-icon .eingabe {
+  padding-right: 44px;
+}
+
+.eingabe-mit-icon .icon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+/* ---------- Filter ---------- */
+
+.filterleiste {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.feld-zeitraum  { width: 282px; }
+.feld-datum     { width: 218px; }
+.feld-lehrkraft { width: 290px; }
+
+.filterleiste .eingabe {
+  height: 54px;
+}
+
+.filterleiste .button {
+  height: 52px;
+}
+
+.datenhinweis {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  height: 54px;
+}
+
+.badge {
+  padding: 5px 12px;
+  border-radius: var(--radius);
+  background-color: #e8e8e4;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* ---------- Kennzahlen ---------- */
+
+.kennzahlen {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.kennzahl {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 128px;
+  padding: 24px;
+  background-color: var(--flaeche);
+  border: 1px solid var(--rahmen);
+  border-radius: var(--radius-karte);
+}
+
+.kennzahl-hervorgehoben {
+  background-color: var(--gelb-hell);
+  border-color: var(--gelb);
+}
+
+.kennzahl-symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  flex: 0 0 auto;
+  border-radius: 8px;
+  background-color: var(--flaeche-grau);
+}
+
+.kennzahl-symbol .icon {
+  width: 26px;
+  height: 26px;
+}
+
+.kennzahl-hervorgehoben .kennzahl-symbol {
+  background-color: var(--gelb);
+}
+
+.kennzahl-label {
+  font-size: 16px;
+  color: var(--text-gedaempft);
+  margin-bottom: 4px;
+}
+
+.kennzahl-wert {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.kennzahl-kontext {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-gedaempft);
+}
+
+
+.karte {
+  background-color: var(--flaeche);
+  border: 1px solid var(--rahmen);
+  border-radius: var(--radius-karte);
+}
+
+.karte-kopf {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.karte-titelzeile {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.karte-titel {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.status {
+  padding: 4px 10px;
+  border-radius: var(--radius);
+  background-color: var(--flaeche-grau);
+  color: var(--text-gedaempft);
+  font-size: 14px;
+}
+
+/* ---------- Neue Zeitbuchung ---------- */
+
+.neue-zeitbuchung {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 28px;
+}
+
+.formularzeile {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.feld-buchungsdatum { width: 236px; flex: 0 0 auto; }
+.feld-flex          { flex: 1; }
+.feld-schueler      { width: 214px; flex: 0 0 auto; }
+.feld-stunden       { width: 244px; flex: 0 0 auto; }
+
+.hinweis {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-gedaempft);
+  font-size: 16px;
+}
+
+.hinweis .icon {
+  color: var(--text);
+}
+
+/* ---------- Zeitbuchungen/leiste ---------- */
+
+.buchungen-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 446px;
+  gap: 32px;
+  align-items: start;
+}
+
+.zeitbuchungen {
+  overflow: hidden;
+}
+
+.tabellenkopf {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 28px;
+}
+
+.anzahl {
+  padding: 2px 10px;
+  border-radius: 100px;
+  background-color: var(--flaeche-grau);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.tabelle {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabelle th,
+.tabelle td {
+  padding: 0 28px;
+  text-align: left;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.tabelle th {
+  height: 54px;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: var(--flaeche-grau);
+  border-top: 1px solid var(--rahmen);
+  border-bottom: 1px solid var(--rahmen);
+}
+
+.tabelle .sortierbar .icon {
+  vertical-align: -2px;
+  margin-left: 4px;
+}
+
+.tabelle tbody td {
+  height: 61px;
+  font-size: 18px;
+  border-bottom: 1px solid var(--rahmen);
+}
+
+.tabelle .rechts {
+  text-align: right;
+}
+
+.tabelle .aktion-spalte {
+  width: 1%;
+  text-align: right;
+  padding-left: 0;
+}
+
+.tabelle tbody tr:hover {
+  background-color: #fcfcfa;
+}
+
+.kuerzel {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background-color: var(--flaeche-grau);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.summenzeile td {
+  height: 62px;
+  background-color: var(--gelb-hell);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.summenzeile .summe {
+  font-size: 21px;
+}
+
+.tabellenabschluss {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+  padding: 0 28px;
+}
+
+.paginierung {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.paginierung .text-gedaempft {
+  margin-right: 8px;
+}
+
+/* Seitenleiste */
+
+.seitenleiste {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.lehrkraefte {
+  padding: 28px;
+}
+
+.lehrkraefte > .text-gedaempft {
+  margin-top: 4px;
+  font-size: 16px;
+}
+
+.lehrkraft {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--rahmen);
+}
+
+.lehrkraft-kopf {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.kuerzel-gross {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 46px;
+  padding: 0;
+  border-radius: var(--radius);
+  font-size: 16px;
+}
+
+.lehrkraft-name {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  font-size: 18px;
+}
+
+.lehrkraft-stunden {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.balken {
+  height: 6px;
+  border-radius: 100px;
+  background-color: var(--flaeche-grau);
+  overflow: hidden;
+}
+
+.balken-wert {
+  height: 100%;
+  border-radius: 100px;
+  background-color: var(--gelb);
+}
+
+.gesamtsumme {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 26px;
+  font-size: 19px;
+}
+
+.gesamtsumme-wert {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.infobox {
+  padding: 24px;
+  border-radius: var(--radius-karte);
+  background-color: var(--gelb-hell);
+}
+
+.infobox-titel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.infobox p {
+  color: var(--text-gedaempft);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1500px) {
+  .formularzeile {
+    flex-wrap: wrap;
+  }
+
+  .feld-flex {
+    min-width: 220px;
+  }
+
+  .buchungen-layout {
+    grid-template-columns: minmax(0, 1fr) 380px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .buchungen-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .zeitbuchungen {
+    overflow-x: auto;
+  }
+
+  .datenhinweis {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .hauptnavigation {
+    flex-wrap: wrap;
+    height: auto;
+    gap: 16px;
+    padding: 12px 16px;
+  }
+
+  .trennlinie,
+  .benutzer-text {
+    display: none;
+  }
+
+  .bereiche {
+    order: 10;
+    flex-basis: 100%;
+    padding-left: 0;
+    height: 44px;
+  }
+
+  .arbeitsbereich {
+    padding: 24px 16px;
+  }
+
+  .seitenkopf {
+    flex-direction: column;
+  }
+
+  .kennzahlen {
+    grid-template-columns: 1fr;
+  }
+
+  .feld-zeitraum,
+  .feld-datum,
+  .feld-lehrkraft,
+  .feld-buchungsdatum,
+  .feld-schueler,
+  .feld-stunden,
+  .feld-flex {
+    width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .filterleiste .button,
+  .formularzeile .button {
+    width: 100%;
+  }
+}
