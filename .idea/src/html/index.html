@@ -157,23 +157,24 @@
           <span class="feld-label">Schüleranzahl *</span>
           <input class="eingabe" type="number" min="1" step="1" value="24" required />
         </label>
-        <label class="feld feld-stunden">
-          <span class="feld-label">Betreuungsstunden *</span>
-          <span class="eingabe-mit-icon">
-            <input class="eingabe eingabe-aktiv" type="text" inputmode="decimal" value="1,50" required />
-            <svg class="icon"><use href="#i-clock"/></svg>
-          </span>
+        <label class="feld feld-halbjahr">
+          <span class="feld-label">Halbjahr *</span>
+          <select class="eingabe" required>
+           <option value="1">Halbjahr 1</option>
+           <option value="2">Halbjahr 2</option>
+         </select>
         </label>
         <button class="button button-primaer button-gross" type="submit">
           <svg class="icon"><use href="#i-plus"/></svg>
           Buchung speichern
         </button>
+        <button class="button button-sekundaer" type="button">
+        <svg class="icon"><use href="#i-download"/></svg>
+        
+      </button>
       </div>
 
-      <p class="hinweis">
-        <svg class="icon icon-klein"><use href="#i-info"/></svg>
-        Betreuungsstunden als tatsächlich erfasste Zeit in Dezimalstunden eintragen, z.&nbsp;B. 1,50&nbsp;h für 1 Stunde 30 Minuten. Keine Berechnung aus der Schüleranzahl.
-      </p>
+
     </form>
 
     <!-- Tabelle + Auswertung -->
