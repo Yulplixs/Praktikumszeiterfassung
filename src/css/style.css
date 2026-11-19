@@ -293,7 +293,8 @@ a:focus-visible {
   box-shadow: 0 0 0 1px var(--fokus);
 }
 
-select.eingabe {
+select.eingabe,
+.combobox .eingabe {
   appearance: none;
   -webkit-appearance: none;
   padding-right: 40px;
@@ -503,7 +504,13 @@ select.eingabe {
 }
 
 .zeitbuchungen {
-  overflow: hidden;
+  overflow-x: auto;
+}
+
+/* 7 Spalten inkl. Aktionen: schmalerer Abstand, damit nichts abgeschnitten wird */
+.zeitbuchungen .tabelle th,
+.zeitbuchungen .tabelle td {
+  padding: 0 18px;
 }
 
 .tabellenkopf {
@@ -561,6 +568,7 @@ select.eingabe {
 
 .tabelle .aktion-spalte {
   width: 1%;
+  white-space: nowrap;
   text-align: right;
   padding-left: 0;
 }
@@ -786,4 +794,67 @@ select.eingabe {
   .formularzeile .button {
     width: 100%;
   }
+}
+
+/* ---------- Kopfzeile: Import und Export ---------- */
+
+.kopf-aktionen {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.import-fehler {
+  max-height: 260px;
+  overflow-y: auto;
+  padding-left: 20px;
+  list-style: disc;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ---------- Combobox: Dropdown mit Suche (Lehrkräfte) ---------- */
+
+.combobox {
+  position: relative;
+  display: block;
+}
+
+.combobox .eingabe {
+  cursor: text;
+}
+
+.combobox-liste {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  max-height: 320px;
+  overflow-y: auto;
+  padding: 4px;
+  background-color: var(--flaeche);
+  border: 1px solid var(--rahmen);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.combobox-liste li {
+  padding: 9px 12px;
+  border-radius: var(--radius);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.combobox-liste li.aktiv {
+  background-color: var(--flaeche-grau);
+}
+
+.combobox-liste li[aria-selected="true"] {
+  font-weight: 700;
+}
+
+.combobox-leer {
+  color: var(--text-gedaempft);
+  cursor: default;
 }

@@ -51,26 +51,41 @@ final class InternshipHoursCalculator
             );
         }
 
-        $factor = $rule->supervisionFactor();
-        $weeks = $rule->weeksFor($halfYear);
-        $hoursPerWeek = $factor * $studentCount;
-        $hoursHalfYear = round(
-            $hoursPerWeek * $weeks / self::HOURS_PER_YEAR,
-            self::ROUNDING_PRECISION,
-            PHP_ROUND_HALF_UP
+        return $this->withSnapshot(
+            [
+                'class_id' => $rule->classId(),
+                'class_code' => $rule->classCode(),
+                'school_year_id' => $rule->schoolYearId(),
+                'half_year' => $halfYear,
+                'student_count' => $studentCount,
+            ],
+            $rule->supervisionFactor(),
+            $rule->weeksFor($halfYear)
         );
+    }
+
+    /**
+     * Rechnet einen Eintrag mit vorgegebenem Faktor und Wochen statt der aktuellen Klassenwerte
+     * (Import: bestehende Snapshots aus der Datei behalten).
+     */
+    public function withSnapshot(array $entry, float $factor, float $weeks): array
+    {
+        if ($factor < 0 || $weeks < 0) {
+            throw new InvalidArgumentException('Factor and weeks must not be negative.');
+        }
+
+        $hoursPerWeek = $factor * (int) $entry['student_count'];
 
         return [
-            'class_id' => $rule->classId(),
-            'class_code' => $rule->classCode(),
-            'school_year_id' => $rule->schoolYearId(),
-            'half_year' => $halfYear,
-            'student_count' => $studentCount,
             'factor_snapshot' => $factor,
             'weeks_snapshot' => $weeks,
             'hours_per_week' => $hoursPerWeek,
-            'hours_half_year' => $hoursHalfYear,
-        ];
+            'hours_half_year' => round(
+                $hoursPerWeek * $weeks / self::HOURS_PER_YEAR,
+                self::ROUNDING_PRECISION,
+                PHP_ROUND_HALF_UP
+            ),
+        ] + $entry;
     }
 
     public function summarizeByTeacher(array $entries): array
