@@ -70,6 +70,152 @@ final class SupervisionEntryRepository
         return (int) $this->pdo->lastInsertId();
     }
 
+    // Transaktionssteuerung für den Excel-Import (alles oder nichts).
+    public function beginTransaction(): void
+    {
+        $this->pdo->beginTransaction();
+    }
+
+    public function commit(): void
+    {
+        $this->pdo->commit();
+    }
+
+    public function rollBack(): void
+    {
+        $this->pdo->rollBack();
+    }
+
+    public function findTeacherIdByCode(string $teacherCode): ?int
+    {
+        $statement = $this->pdo->prepare('SELECT id FROM teachers WHERE code = :code');
+        $statement->execute(['code' => $teacherCode]);
+
+        $id = $statement->fetchColumn();
+
+        return $id === false ? null : (int) $id;
+    }
+
+    /**
+     * Speichert einen berechneten Eintrag, der teacher_id und created_by bereits enthält (Excel-Import).
+     */
+    public function insert(array $entry): int
+    {
+        return $this->create($entry, (int) $entry['teacher_id'], (int) $entry['created_by']);
+    }
+
+    /**
+     * Löscht alle Einträge eines Schuljahres (Import "Schuljahr ersetzen").
+     * Läuft innerhalb der Import-Transaktion, daher ohne eigene Transaktion.
+     */
+    public function deleteBySchoolYear(int $schoolYearId, int $deletedBy): int
+    {
+        $statement = $this->pdo->prepare('DELETE FROM supervision_entries WHERE school_year_id = :id');
+        $statement->execute(['id' => $schoolYearId]);
+
+        $this->pdo->prepare(
+            "INSERT INTO audit_log (user_id, action, entity_type, entity_id, created_at)
+             VALUES (:user_id, 'replace_by_import', 'school_year', :entity_id, UTC_TIMESTAMP())"
+        )->execute(['user_id' => $deletedBy, 'entity_id' => $schoolYearId]);
+
+        return $statement->rowCount();
+    }
+
+    public function findById(int $id): ?array
+    {
+        $statement = $this->pdo->prepare(
+            'SELECT id, school_year_id, half_year, class_id, teacher_id, student_count
+             FROM supervision_entries WHERE id = :id'
+        );
+        $statement->execute(['id' => $id]);
+
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+
+        return $row === false ? null : $row;
+    }
+
+    /**
+     * Überschreibt Klasse, Halbjahr, Lehrkraft, Schülerzahl und den Berechnungs-Snapshot.
+     * Das Schuljahr bleibt unverändert. Schreibt einen Eintrag in audit_log.
+     */
+    public function update(
+        int $id,
+        array $entry,
+        int $teacherId,
+        int $updatedBy
+    ): void {
+        $this->validateEntry($entry);
+
+        if ($teacherId < 1 || $updatedBy < 1) {
+            throw new InvalidArgumentException('Teacher and updater IDs must be positive.');
+        }
+
+        $sql = <<<'SQL'
+            UPDATE supervision_entries SET
+                half_year = :half_year,
+                class_id = :class_id,
+                teacher_id = :teacher_id,
+                student_count = :student_count,
+                factor_snapshot = :factor_snapshot,
+                weeks_snapshot = :weeks_snapshot,
+                hours_per_week = :hours_per_week,
+                hours_half_year = :hours_half_year,
+                updated_by = :updated_by,
+                updated_at = UTC_TIMESTAMP()
+            WHERE id = :id
+            SQL;
+
+        $this->pdo->beginTransaction();
+        try {
+            $this->pdo->prepare($sql)->execute([
+                'id' => $id,
+                'half_year' => $entry['half_year'],
+                'class_id' => $entry['class_id'],
+                'teacher_id' => $teacherId,
+                'student_count' => $entry['student_count'],
+                'factor_snapshot' => $entry['factor_snapshot'],
+                'weeks_snapshot' => $entry['weeks_snapshot'],
+                'hours_per_week' => $entry['hours_per_week'],
+                'hours_half_year' => $entry['hours_half_year'],
+                'updated_by' => $updatedBy,
+            ]);
+            $this->audit('update', $id, $updatedBy);
+            $this->pdo->commit();
+        } catch (\Throwable $e) {
+            $this->pdo->rollBack();
+            throw $e;
+        }
+    }
+
+    /**
+     * Löscht den Eintrag endgültig und schreibt einen Eintrag in audit_log.
+     */
+    public function delete(int $id, int $deletedBy): void
+    {
+        $this->pdo->beginTransaction();
+        try {
+            $this->pdo->prepare('DELETE FROM supervision_entries WHERE id = :id')
+                ->execute(['id' => $id]);
+            $this->audit('delete', $id, $deletedBy);
+            $this->pdo->commit();
+        } catch (\Throwable $e) {
+            $this->pdo->rollBack();
+            throw $e;
+        }
+    }
+
+    private function audit(string $action, int $entityId, int $userId): void
+    {
+        $this->pdo->prepare(
+            "INSERT INTO audit_log (user_id, action, entity_type, entity_id, created_at)
+             VALUES (:user_id, :action, 'supervision_entry', :entity_id, UTC_TIMESTAMP())"
+        )->execute([
+            'user_id' => $userId,
+            'action' => $action,
+            'entity_id' => $entityId,
+        ]);
+    }
+
     public function findBySchoolYear(int $schoolYearId): array
     {
         return $this->fetchEntries($schoolYearId, null);
@@ -101,7 +247,7 @@ final class SupervisionEntryRepository
                 classes.code AS class_code,
                 supervision_entries.teacher_id,
                 teachers.code AS teacher_code,
-                teachers.name AS teacher_name,
+                CONCAT_WS(' ', NULLIF(teachers.title, ''), teachers.firstname, teachers.surname) AS teacher_name,
                 supervision_entries.student_count,
                 supervision_entries.factor_snapshot,
                 supervision_entries.weeks_snapshot,

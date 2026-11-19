@@ -21,3 +21,7 @@ button:focus-visible {
 a {
   text-decoration: none;
 }
+/* hidden-Attribut gegen display-Regeln wie .button durchsetzen */
+[hidden] {
+  display: none !important;
+}
