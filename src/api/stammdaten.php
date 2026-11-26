@@ -6,17 +6,17 @@ declare(strict_types=1);
 
 require __DIR__ . '/bootstrap.php';
 
+use App\Repository\ClassRepository;
+use App\Repository\ClassRuleRepository;
+use App\Repository\SchoolYearRepository;
+use App\Repository\TeacherRepository;
+
 $pdo = db();
 
 antworte([
-    'schuljahre' => $pdo->query(
-        'SELECT id, name FROM school_years ORDER BY start_date DESC'
-    )->fetchAll(),
-    'klassen' => $pdo->query(
-        'SELECT id, code, name FROM classes ORDER BY code'
-    )->fetchAll(),
-    'lehrkraefte' => $pdo->query(
-        "SELECT id, code, CONCAT_WS(' ', NULLIF(title, ''), firstname, surname) AS name
-         FROM teachers ORDER BY code"
-    )->fetchAll(),
+    'schuljahre' => (new SchoolYearRepository($pdo))->findAll(),
+    'klassen' => (new ClassRepository($pdo))->findAll(),
+    // Wochen je Klasse und Schuljahr: das Formular zeigt nur Klassen mit Wochen im gewählten Halbjahr.
+    'klassenwerte' => (new ClassRuleRepository($pdo))->findAllWeeks(),
+    'lehrkraefte' => (new TeacherRepository($pdo))->findForSelection(),
 ]);
