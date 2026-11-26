@@ -12,6 +12,7 @@ require __DIR__ . '/../../vendor/autoload.php';
 
 use App\Repository\ClassRuleRepository;
 use App\Repository\ImportBatchRepository;
+use App\Repository\SchoolYearRepository;
 use App\Repository\SupervisionEntryRepository;
 use App\Service\ExcelImportService;
 use App\Service\InternshipHoursCalculator;
@@ -40,9 +41,7 @@ if (strtolower(pathinfo((string) $datei['name'], PATHINFO_EXTENSION)) !== 'xlsx'
 
 $pdo = db();
 $schoolYearId = (int) ($_POST['school_year_id'] ?? 0);
-$schuljahr = $pdo->prepare('SELECT 1 FROM school_years WHERE id = ?');
-$schuljahr->execute([$schoolYearId]);
-if ($schuljahr->fetchColumn() === false) {
+if ((new SchoolYearRepository($pdo))->findNameById($schoolYearId) === null) {
     antworte(['fehler' => 'Unbekanntes Schuljahr.'], 404);
 }
 

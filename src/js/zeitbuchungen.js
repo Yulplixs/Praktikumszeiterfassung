@@ -1,29 +1,15 @@
 // Seite "Betreuungszeiten": lädt Stammdaten und Einträge aus der API, filtert, blättert,
 // legt Einträge an, bearbeitet und löscht sie und startet den Excel-Export.
 
-const API = '../api/';
+// Hilfsfunktionen ($, api, esc, stunden, normalisiere) kommen aus gemeinsam.js.
 const PRO_SEITE = 25;
-const $ = (id) => document.getElementById(id);
 
 let eintraege = [];
 let zusammenfassung = { teachers: [], totals: {} };
 let seite = 1;
 let bearbeiteId = null;
-
-const stunden = (wert) =>
-  Number(wert).toLocaleString('de-DE', { minimumFractionDigits: 3, maximumFractionDigits: 3 }) + ' h';
-
-const esc = (text) =>
-  String(text ?? '').replace(/[&<>"']/g, (z) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[z]);
-
-async function api(pfad, optionen) {
-  const antwort = await fetch(API + pfad, optionen);
-  const daten = await antwort.json().catch(() => ({}));
-  if (!antwort.ok) {
-    throw new Error(daten.fehler || `Serverfehler (${antwort.status})`);
-  }
-  return daten;
-}
+let klassen = [];
+let klassenwerte = [];
 
 function optionen(select, liste, wert, text) {
   select.insertAdjacentHTML(
@@ -32,8 +18,6 @@ function optionen(select, liste, wert, text) {
   );
 }
 
-// Vergleich ohne Groß-/Kleinschreibung und ohne Akzente: "boh" findet "BÖH", "muller" findet "Müller".
-const normalisiere = (text) => text.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
 // Macht aus einem <select> ein Dropdown mit Suche (ARIA-Combobox). Das <select> bleibt versteckt
 // als Wertspeicher, damit Formular, Filter und change-Ereignisse unverändert funktionieren.
@@ -132,10 +116,27 @@ async function ladeStammdaten() {
   const daten = await api('stammdaten.php');
   optionen($('filter-schuljahr'), daten.schuljahre, 'id', (s) => `Schuljahr ${s.name}`);
   optionen($('filter-lehrkraft'), daten.lehrkraefte, 'id', (l) => `${l.code} – ${l.name}`);
-  optionen($('feld-klasse'), daten.klassen, 'code', (k) => `${k.code} – ${k.name}`);
+  klassen = daten.klassen;
+  klassenwerte = daten.klassenwerte;
+  fuelleKlassen();
   optionen($('feld-lehrkraft'), daten.lehrkraefte, 'id', (l) => `${l.code} – ${l.name}`);
   macheCombobox($('filter-lehrkraft'));
   macheCombobox($('feld-lehrkraft'));
+}
+
+// Nur Klassen mit Praktikumswochen im gewählten Schuljahr und Halbjahr; die API lehnt andere ab.
+function fuelleKlassen() {
+  const select = $('feld-klasse');
+  const vorher = select.value;
+  const halbjahr = $('formular').half_year.value;
+  const mitWochen = new Set(klassenwerte
+    .filter((w) => String(w.school_year_id) === $('filter-schuljahr').value && Number(w[`weeks_half_year_${halbjahr}`]) > 0)
+    .map((w) => w.code));
+  select.innerHTML = '';
+  optionen(select, klassen.filter((k) => mitWochen.has(k.code)), 'code', (k) => `${k.code} – ${k.name}`);
+  if ([...select.options].some((o) => o.value === vorher)) {
+    select.value = vorher;
+  }
 }
 
 async function ladeEintraege() {
@@ -217,11 +218,12 @@ function setzeModus(eintrag) {
   $('formular-knopf').textContent = eintrag ? 'Änderungen speichern' : 'Eintrag speichern';
   $('formular-abbrechen').hidden = !eintrag;
   if (eintrag) {
+    formular.half_year.value = eintrag.half_year;
+    fuelleKlassen(); // vor der Klasse, weil die Klassenliste vom Halbjahr abhängt
     formular.class_code.value = eintrag.class_code;
     formular.teacher_id.value = eintrag.teacher_id;
     formular.teacher_id.dispatchEvent(new Event('change')); // Text der Lehrkraft-Combobox nachziehen
     formular.student_count.value = eintrag.student_count;
-    formular.half_year.value = eintrag.half_year;
     $('formular-status').textContent = `Bearbeite ${eintrag.class_code} · ${eintrag.teacher_code}`;
     formular.scrollIntoView({ behavior: 'smooth', block: 'center' });
     formular.class_code.focus({ preventScroll: true });
@@ -272,8 +274,10 @@ function zeigeFehler(fehler) {
   $('tabelle-zeilen').innerHTML = `<tr><td colspan="7">Daten konnten nicht geladen werden: ${esc(fehler.message)}</td></tr>`;
 }
 
+$('formular').half_year.addEventListener('change', fuelleKlassen);
 $('filter-schuljahr').addEventListener('change', () => {
   seite = 1;
+  fuelleKlassen();
   ladeEintraege().catch(zeigeFehler);
 });
 $('filter-halbjahr').addEventListener('change', neuFiltern);

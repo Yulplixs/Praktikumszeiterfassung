@@ -51,6 +51,12 @@ final class InternshipHoursCalculator
             );
         }
 
+        if ($rule->weeksFor($halfYear) <= 0) {
+            throw new DomainException(
+                'Die Klasse ' . $classCode . ' hat im Halbjahr ' . $halfYear . ' keine Praktikumswochen.'
+            );
+        }
+
         return $this->withSnapshot(
             [
                 'class_id' => $rule->classId(),

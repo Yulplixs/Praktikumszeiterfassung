@@ -9,17 +9,17 @@ require __DIR__ . '/bootstrap.php';
 require __DIR__ . '/../../vendor/autoload.php';
 
 use App\Repository\ClassRuleRepository;
+use App\Repository\SchoolYearRepository;
 use App\Repository\SupervisionEntryRepository;
+use App\Repository\TeacherRepository;
 use App\Service\ExcelExportService;
 use App\Service\InternshipHoursCalculator;
 
 $pdo = db();
 $schoolYearId = (int) ($_GET['school_year_id'] ?? 0);
 
-$schuljahr = $pdo->prepare('SELECT name FROM school_years WHERE id = ?');
-$schuljahr->execute([$schoolYearId]);
-$name = $schuljahr->fetchColumn();
-if ($name === false) {
+$name = (new SchoolYearRepository($pdo))->findNameById($schoolYearId);
+if ($name === null) {
     antworte(['fehler' => 'Unbekanntes Schuljahr.'], 404);
 }
 
@@ -28,10 +28,8 @@ $eintraege = (new SupervisionEntryRepository($pdo))->findBySchoolYear($schoolYea
 $dateiname = 'Praktikumsbetreuung_' . str_replace('/', '-', $name);
 $teacherId = (int) ($_GET['teacher_id'] ?? 0);
 if ($teacherId > 0) {
-    $lehrkraft = $pdo->prepare('SELECT code FROM teachers WHERE id = ?');
-    $lehrkraft->execute([$teacherId]);
-    $kuerzel = $lehrkraft->fetchColumn();
-    if ($kuerzel === false) {
+    $kuerzel = (new TeacherRepository($pdo))->findCodeById($teacherId);
+    if ($kuerzel === null) {
         antworte(['fehler' => 'Unbekannte Lehrkraft.'], 404);
     }
     $eintraege = array_values(array_filter(

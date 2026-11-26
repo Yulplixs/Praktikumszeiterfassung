@@ -513,6 +513,13 @@ select.eingabe,
   padding: 0 18px;
 }
 
+/* Klassenseite: 10 Spalten, Kopf und Bezeichnung dürfen umbrechen */
+.zeitbuchungen .tabelle-kompakt th,
+.zeitbuchungen .tabelle-kompakt td {
+  padding: 0 10px;
+  white-space: normal;
+}
+
 .tabellenkopf {
   display: flex;
   align-items: center;

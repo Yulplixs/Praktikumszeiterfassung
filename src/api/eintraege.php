@@ -11,6 +11,7 @@ require __DIR__ . '/bootstrap.php';
 
 use App\Repository\ClassRuleRepository;
 use App\Repository\SupervisionEntryRepository;
+use App\Repository\TeacherRepository;
 use App\Service\InternshipHoursCalculator;
 
 // shortcut: Anmeldung übernimmt der Admin, bis dahin ist immer User 1 (system-import) der Bearbeiter.
@@ -52,9 +53,7 @@ if (!is_array($eingabe)) {
 }
 
 $teacherId = (int) ($eingabe['teacher_id'] ?? 0);
-$lehrkraft = $pdo->prepare('SELECT 1 FROM teachers WHERE id = ?');
-$lehrkraft->execute([$teacherId]);
-if ($lehrkraft->fetchColumn() === false) {
+if ((new TeacherRepository($pdo))->findCodeById($teacherId) === null) {
     antworte(['fehler' => 'Unbekannte Lehrkraft.'], 422);
 }
 
